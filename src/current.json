@@ -1,0 +1,32 @@
+{
+    "reviews" : [
+        {
+            "id" : 1,
+            "name" : "Panda",
+            "job" : "web developer",
+            "img" : "https://res.cloudinary.com/dljezd6qv/image/upload/v1618539852/panda_firju8.jpg",
+            "text" : "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s"
+        },
+        {
+            "id" : 2,
+            "name" : "Leopard",
+            "job" : "web designer",
+            "img" : "https://res.cloudinary.com/dljezd6qv/image/upload/v1618539845/leopard_k5brx6.jpg",
+            "text" : "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo"
+        },
+        {
+            "id" : 3,
+            "name" : "Wolf",
+            "job" : "Front-end developer",
+            "img" : "https://res.cloudinary.com/dljezd6qv/image/upload/v1618539856/wolf_infype.jpg",
+            "text" : "Li Europan lingues es membres del sam familie. Lor separat existentie es un myth. Por scientie, musica, sport etc, litot Europa usa li sam vocabular. Li lingues differe solmen in li grammatica, li pronunciation e li plu commun vocabules. Omnicos directe al desirabilite de un nov lingua franca"
+        },
+        {
+            "id" : 4,
+            "name" : "Panda",
+            "job" : "web developer",
+            "img" : "https://res.cloudinary.com/dljezd6qv/image/upload/v1618539856/wolf_infype.jpg",
+            "text" : "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s"
+        }
+    ]
+}
