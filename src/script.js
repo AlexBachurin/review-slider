@@ -31,7 +31,7 @@ window.addEventListener('DOMContentLoaded', () => {
     const setContent = (data, current) => {
         const item = data.reviews[current];
         img.src = item.img;
-        author.textContent = item.author;
+        author.textContent = item.name;
         job.textContent = item.job;
         text.textContent = item.text;
     }
@@ -45,10 +45,9 @@ window.addEventListener('DOMContentLoaded', () => {
                 //check if current is equals last element of our data array,then reset it to 0
                 if (current >= data.reviews.length) {
                     current = 0;
-                    setContent(data, current)
-                } else {
-                    setContent(data, current)
                 }
+                setContent(data, current)
+
             }).catch(() => console.log('error'))
     })
 
@@ -57,13 +56,12 @@ window.addEventListener('DOMContentLoaded', () => {
         current--;
         getData('current.json')
             .then(data => {
-                //same as next but check if current is lower then first, then set it to last element of data array
+                //same as next but check if current is lower then first elem, then set it to last element of data array
                 if (current < 0) {
                     current = data.reviews.length - 1;
-                    setContent(data, current);
-                } else {
-                    setContent(data, current);
                 }
+                setContent(data, current);
+
             })
             .catch(() => console.log('error'))
     })
