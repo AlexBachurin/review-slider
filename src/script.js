@@ -18,16 +18,17 @@ window.addEventListener('DOMContentLoaded', () => {
         job = document.querySelector('.reviews__job'),
         text = document.querySelector('.reviews__text'),
         prevBtn = document.querySelector('.reviews__btn_prev'),
-        nextBtn = document.querySelector('.reviews__btn_next');
+        nextBtn = document.querySelector('.reviews__btn_next'),
+        randomBtn = document.querySelector('.reviews__random-btn');
 
     //get data from server and initialize page
     getData('current.json')
         .then(data => {
             //get initial element from data and set it to the page
             setContent(data, current);
-        }).catch(() => console.log('error'));
+        }).catch(() => console.log('error on initialize'));
 
-
+    //helper to set content into html
     const setContent = (data, current) => {
         const item = data.reviews[current];
         img.src = item.img;
@@ -48,9 +49,9 @@ window.addEventListener('DOMContentLoaded', () => {
                 }
                 setContent(data, current)
 
-            }).catch(() => console.log('error'))
+            }).catch(() => console.log('error in next'))
     })
-
+    //show prev
     prevBtn.addEventListener('click', (e) => {
         e.preventDefault();
         current--;
@@ -63,7 +64,19 @@ window.addEventListener('DOMContentLoaded', () => {
                 setContent(data, current);
 
             })
-            .catch(() => console.log('error'))
+            .catch(() => console.log('error in prev'))
+    })
+
+    //show random review
+    randomBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        getData('current.json')
+        .then(data => {
+            //get random number between 0 and data array length including last elem
+            current = Math.floor(Math.random() * data.reviews.length);
+            setContent(data, current);
+        })
+        .catch(() => console.log('error in random'))
     })
 
 
