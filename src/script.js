@@ -9,7 +9,7 @@ const getData = async (url) => {
     return await res.json();
 }
 
-//set starting item
+//set starting value to show on page
 let current = 0;
 
 window.addEventListener('DOMContentLoaded', () => {
@@ -24,14 +24,17 @@ window.addEventListener('DOMContentLoaded', () => {
     getData('current.json')
         .then(data => {
             //get initial element from data and set it to the page
-            const item = data.reviews[current];
-            img.src = item.img;
-            author.textContent = item.author;
-            job.textContent = item.job;
-            text.textContent = item.text;
+            setContent(data, current);
         }).catch(() => console.log('error'));
 
-    
+
+    const setContent = (data, current) => {
+        const item = data.reviews[current];
+        img.src = item.img;
+        author.textContent = item.author;
+        job.textContent = item.job;
+        text.textContent = item.text;
+    }
     //logic is simple : every click on next button we increment counter
     //on prev button we decrement counter
     nextBtn.addEventListener('click', (e) => {
@@ -42,17 +45,9 @@ window.addEventListener('DOMContentLoaded', () => {
                 //check if current is equals last element of our data array,then reset it to 0
                 if (current >= data.reviews.length) {
                     current = 0;
-                    const item = data.reviews[current];
-                    img.src = item.img;
-                    author.textContent = item.author;
-                    job.textContent = item.job;
-                    text.textContent = item.text;
+                    setContent(data, current)
                 } else {
-                    const item = data.reviews[current];
-                    img.src = item.img;
-                    author.textContent = item.author;
-                    job.textContent = item.job;
-                    text.textContent = item.text; 
+                    setContent(data, current)
                 }
             }).catch(() => console.log('error'))
     })
@@ -65,23 +60,13 @@ window.addEventListener('DOMContentLoaded', () => {
                 //same as next but check if current is lower then first, then set it to last element of data array
                 if (current < 0) {
                     current = data.reviews.length - 1;
-                    const item = data.reviews[current];
-                    img.src = item.img;
-                    author.textContent = item.author;
-                    job.textContent = item.job;
-                    text.textContent = item.text;
+                    setContent(data, current);
                 } else {
-                    const item = data.reviews[current];
-                    img.src = item.img;
-                    author.textContent = item.author;
-                    job.textContent = item.job;
-                    text.textContent = item.text;
+                    setContent(data, current);
                 }
             })
             .catch(() => console.log('error'))
     })
 
-    const data = getData('current.json');
-    console.log(data);
 
 })
